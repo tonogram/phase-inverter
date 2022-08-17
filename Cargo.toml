@@ -1,9 +1,18 @@
 [package]
 name = "phase-inverter"
-version = "0.1.0"
+version = "1.0.0"
 edition = "2021"
 
 [lib]
 crate-type = ["cdylib"]
 
+[workspace]
+# You can create this workspace member with `cargo new --bin xtask`, but it must
+# be added here manually. You will also need to copy what's been done with
+# .cargo/config, as that's necessary to make it work.
+members = ["xtask"]
+
 [dependencies]
+# nih-plug automatically includes VST3 support as a default feature. We don't
+# need/want that, so we can exclude it by disabling default features.
+nih_plug = { git = "https://github.com/robbert-vdh/nih-plug", default-features = false }
